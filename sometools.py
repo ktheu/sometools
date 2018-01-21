@@ -15,7 +15,7 @@ for x in eingaben:
     if p1 > 0:
         p2 = x.find(')')
         abk = x[p1+1:p2]  # abkürzung
-        cmd = x[:p1]      # kommando 
+        cmd = x[:p1]      # kommando
         edict[cmd] = cmd
         edict[abk] = cmd
     else:
@@ -25,7 +25,7 @@ print('Eingabe oder q(quit), h(help)')
 while True:
     print('-> ',end='')
     eingabe = input()
-    if eingabe == 'q': 
+    if eingabe == 'q':
         print('Goodbye')
         break
     elif eingabe == 'h':
@@ -33,10 +33,5 @@ while True:
     elif eingabe not in edict:
         print('Ungültige Eingabe')
     else:
-        exec('from ' + edict[eingabe] + ' import *') 
+        exec('from ' + edict[eingabe] + ' import *')
         exec(edict[eingabe]+'_ui()')
-
-        
-        
-
-
