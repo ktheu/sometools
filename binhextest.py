@@ -35,7 +35,8 @@ def binhextest_ui():
             falsch += 1
     print('Du hast: ' + str(round(falsch / runden, 2) * 100) +'% Falsch gemacht.')
     print('Du hast ' + str(round(time.time() - start, 2)) + ' Sekunden gebraucht')
-    
+
     print('Das sind ' + str(round(time.time() - start, 2)/ runden) + 'Sekunden pro Runde')
 
-
+if __name__ == '__main__':
+    ggt_ui()
