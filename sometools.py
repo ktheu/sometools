@@ -3,7 +3,7 @@ Eine neue Auswahl in das set eingaben aufnehmen.
 Eine Abkürzung in Klammern dahinter schreiben.
 '''
 
-eingaben = {'collatz(col)','ggt','binhextest(bht)','addnum(adn)'}
+eingaben = ['collatz(col)','ggt','binhextest(bht)','addnum(adn)']
 
 def help_():
     print('Verfügbare Kommandos (Abkürzung in Klammern):')
