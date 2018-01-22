@@ -1,5 +1,5 @@
 '''
-Eine neue Auswahl in das set eingaben aufnehmen.
+Eine neue Auswahl in die Liste eingaben aufnehmen.
 Eine Abkürzung in Klammern dahinter schreiben.
 '''
 
