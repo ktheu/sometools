@@ -16,3 +16,6 @@ def collatz(x):
 def collatz_ui():
     n = int(input('Bitte eine positive ganze Zahl eingeben: '))
     print('Die Collatz-Zahl für',n,'ist',collatz(n))
+    
+if __name__ == '__main__':
+    ggt_ui()

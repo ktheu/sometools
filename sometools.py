@@ -1,6 +1,6 @@
 '''
 Eine neue Auswahl in die Liste eingaben aufnehmen.
-Eine Abkürzung in Klammern dahinter schreiben. - 
+Eine Abkürzung in Klammern dahinter schreiben. -
 '''
 
 eingaben = ['collatz(col)','ggt','binhextest(bht)','addnum(adn)','subnum(sbn)']
