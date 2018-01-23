@@ -12,10 +12,18 @@ def collatz(x):
         zaehl+=1
     return zaehl
 
-
 def collatz_ui():
     n = int(input('Bitte eine positive ganze Zahl eingeben: '))
     print('Die Collatz-Zahl für',n,'ist',collatz(n))
-    
+
+'''
+Test
+'''
+import unittest
 if __name__ == '__main__':
-    ggt_ui()
+    unittest.main()
+    #collatz_ui()
+
+class MyTest(unittest.TestCase):
+    def test_collatz(self):
+        self.assertEqual(collatz(1),0)
