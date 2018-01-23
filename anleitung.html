@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <style type="text/css">
+    body {
+      line-height: 1.7;
+      color: #555753;
+      background: #fff;
+      margin-top: 50px;
+      margin-right: 200px;
+      margin-bottom: 50px;
+      margin-left: 200px;
+      font-family: Verdana, Arial, Helvetica, sans-serif;
+      font-size: 100%;
+    }
+
+    p {
+      margin-top: 25px;
+      text-align: left;
+    }
+
+    .codef {
+      font-family: "Courier New", Courier, monospace;
+      font-size: 16px;
+      line-height: normal;
+      color: #0D0000;
+      background-color: #F2F2F2;
+      font-style: normal;
+    }
+  </style>
+  <title>Git und GitHub</title>
+</head>
+
+<body>
+  <p> Für ein gemeinsames Software-Projekt nutzen wir Git und GitHub </p>
+  <h4>Installation und Setup</h4>
+
+  <p>1. Erstelle einen kostenlosen account bei <a href="https://github.com/">GitHub</a>. Die Einrichtung muss über eine gültige email-Adresse bestätigt werden. Benutzername und email-Adresse werden später bei der Einrichtung von Git benötigt.
+  </p>
+  <p>2. Installiere die Software <a href="https://git-scm.com/">Git</a>. Die default-Einstellungen können beibehalten werden.
+  </p>
+  <p>3. Clicke auf Git Bash, es öffnet sich eine Konsole. Mache folgende Eingaben mit dem Benutzernamen und der email-Adresse deines GitHub-accounts.
+    <pre class=codef>
+$ git config --global user.name "malteRiedberg"
+$ git config --global user.email "malte.riedberg@googlemail.com"
+</pre>
+  </p>
+  <p>4. Installiere die Software <a href="https://desktop.github.com/">GitHub Desktop</a>. Clicke auf <em>Sign into Github</em>. Gib anschließend noch einen Namen ein, über den ich dich identifizieren kann (sollte also ein bisschen Ähnlichkeit mit deinem
+    richtigen Namen haben).
+  </p>
+
+  <h4>Installation und Setup</h4>
+
+  <p>1. Melde dich bei GitHub an. Gib im Suchfeld oben links ein: <em>ktheu/sometools</em> ein, klicke dann auf den Namen des gefundenen Repositories und dann oben rechts auf den button <em>fork</em>. Dadurch wird eine Kopie des Repos <em>ktheu/sometools</em>    in deinem GitHub account erstellt: <em>malteRiedberg/sometools</em>.
+
+    <p>2. Starte GitHub Desktop und clicke auf <em>clone a repository </em>. Selektiere das gerade auf GitHub erzeugte (remote) Repository. Passe den <em>Local path</em> an und clicke auf
+      <em>clone </em>. Jetzt sind die Files in deinem lokalen repository.</p>
+
+
+    <h4>Installation und Setup</h4>
+    <p>1. Füge ein den <em>sometools </em> ein weiteres Feature hinzu. </p>
+    <p>2. Öffne GitHub Desktop. Die geänderten Files werden angezeigt. Schreibe in das Feld summary einen kurzen Text, z.B.
+      <em>add featurename </em> </p> und klicke auf <em>Commit to master </em>. Damit sind die Änderungen in deinem lokalen Repository gespeichert. Dann klicke oben auf <em>Push origin </em>. Dadurch werden die Änderungen in dein remote Repository auf
+    GitHub übertragen.
+    <p> 3. Gehe nach GitHub und klicke auf <em>New pull request </em>. Es kommt hoffentlich die Meldung <em>Able to merge </em>. Klicke auf <em>Create pull request, </em> schreibe ggf. noch weitere Erläuterungen und klicke dann nochmal auf <em>Create pull request </em>      </p>
+</body>
+
+<h4>Update der eigenen Repositories</h4>
+<p>1. Wenn deine Änderung akzeptiert wurde, bekommst du in GitHub die Meldung, dass dein commit in das Repository <em>ktheu/master</em> gemerged wurde.</em>
+</p>
+
+<p>2. Wenn in <em>ktheu/master</em> weitere Änderungen gemacht wurden, bekommst du in GitHub eine Meldung wie <em>this branch is 1 commit behind ktheu/master</em>. Um das eigene remote repo mit den Ursprung des forks zu synchronisieren, muss man zunächst
+  das eigene lokale Repo synchronisieren. Öffne GitHub Desktop und wähle <em> Repository - Open in Command Prompt </em>. Gib dort den Befehl ein: <em>git fetch upstream</em>. Dadurch wird im lokale Repo ein branch mit dem neuen Ursprungs-Repo erstellt.
+  Selektiere dann <em> Branch - merge into current branch </em>. Klicke anschließend
+  <em>Push origin</em> um den neuen Stand auf den dein remote Repo zu übertragen.</p>
+
+<h4>Anforderungen an neue Features am Beispiel <em>collatz</em></h4>
+<p>Das Feature steht in der Datei <em>collatz.py</em>. In dieser Datei steht die eigentliche Berechnung in einer Funktion <em>def collatz</em>. Das UserInterface, d.h. alle Ein- und Ausgaben stehen in <em>def collatz_ui</em>. In dem File <em>sometools.py</em>  muss der Name des Features und ggf. eine Abkürzung eingetragen werden. </p>
+</body>
+
+</html>
