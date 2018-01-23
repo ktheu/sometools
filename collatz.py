@@ -1,7 +1,14 @@
+'''
+Erweiterungen:
+- Ausgabe der Folge
+- Ausgabe der größten Zahl in der Folge
+'''
 def collatz(x):
     '''
     x: positive ganze Zahl
-    returns: Collatz-Zahl für x
+    returns: Collatz-Zahl für x, d.h. die Anzahl der Schritte, die
+       benötigt wird, um zur 1 zu gelangen. Diese Anzahl ist 1 weniger
+       als die Länge der Folge, die dadurch entsteht.
     '''
     zaehl = 0
     while x != 1:
@@ -25,7 +32,7 @@ if __name__ == '__main__':
     #collatz_ui()
 
 class MyTest(unittest.TestCase):
-    # http://www.rzbt.haw-hamburg.de/dankert/spezmath/html/collatzproblem.html  
+    # http://www.rzbt.haw-hamburg.de/dankert/spezmath/html/collatzproblem.html
     def test_collatz(self):
         self.assertEqual(collatz(1),0)
         self.assertEqual(collatz(1),0)
