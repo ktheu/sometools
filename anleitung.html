@@ -98,12 +98,16 @@ $ git config --global user.email "malte.riedberg@googlemail.com"
       <p>2. Selektiere <em> Branch - merge into current branch </em>. Klicke anschließend
        <em>Push origin</em> um den neuen Stand auf den dein remote Repo zu übertragen.</p>
 
-    <h4>Anforderungen an neue Features am Beispiel  <em>collatz</em> </h4>
-    <p>Das Feature steht in der Datei
-      <em>collatz.py</em>. In dieser Datei steht die eigentliche Berechnung in einer Funktion
-      <em>def collatz</em>. Das UserInterface, d.h. alle Ein- und Ausgaben stehen in
-      <em>def collatz_ui</em>. In dem File
-      <em>sometools.py</em> muss der Name des Features und ggf. eine Abkürzung eingetragen werden.
+    <h4>Anforderungen an neue Features </h4>
+    <p>Angenommen wir haben ein neues Feature erstellt, das in der Datei <em>abc.py</em>
+      steht. Dann muss <em>abc</em> in die Liste <em>eingaben</em> in <em>sometools.py</em>
+      aufgenommen werden. In <em>abc.py</em> muss es eine Funktion <em>def abc_ui()</em> geben,
+      mit dem das  Feature aufgerufen wird. Diese Funktion sollte nur für die Ein- und Ausgabe
+      zuständig sein, alle Berechnungen sollten in eigene Funktionen verlegt sein.
+      In diesen Funktionen sollten keine Ein- und Ausgaben erfolgen. Alles was diese Funktionen
+      für ihre Arbeit benötigen, erhalten sie über Parameter, alles was sie berechnen,
+      geben sie über return zurück. Jede dieser Funktionen sollte einen docstring
+      enthalten und für jede dieser Funktionen sollte ein unit-Test in <em>abc.py</em> kodiert sein.
     </p>
 </body>
 
