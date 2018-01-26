@@ -27,7 +27,7 @@ def binhextest_ui():
     for i in range(0, runden):
         aktuell = str(random.randint(0,1)) + str(random.randint(0,1)) + str(random.randint(0,1)) + str(random.randint(0,1))
         test = input(aktuell + ' ')
-        if test == bin_hex(aktuell):
+        if test.lower() == bin_hex(aktuell).lower():
             print('Richtig')
         else:
             print('Falsch')
@@ -36,7 +36,7 @@ def binhextest_ui():
     print('Du hast: ' + str(round(falsch / runden, 2) * 100) +'% Falsch gemacht.')
     print('Du hast ' + str(round(time.time() - start, 2)) + ' Sekunden gebraucht')
 
-    print('Das sind ' + str(round(time.time() - start, 2)/ runden) + 'Sekunden pro Runde')
+    print('Das sind ' + str(round(round(time.time() - start, 2)/ runden), 2) + 'Sekunden pro Runde')
 
 if __name__ == '__main__':
     ggt_ui()
