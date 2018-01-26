@@ -35,6 +35,5 @@ class MyTest(unittest.TestCase):
     # http://www.rzbt.haw-hamburg.de/dankert/spezmath/html/collatzproblem.html
     def test_collatz(self):
         self.assertEqual(collatz(1),0)
-        self.assertEqual(collatz(1),0)
         self.assertEqual(collatz(27),111)
         self.assertEqual(collatz(4678569684640115198788879879891134694131654641135698443131649876871351354984987413213),2215)
