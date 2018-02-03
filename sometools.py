@@ -3,7 +3,7 @@ Eine neue Auswahl in die Liste eingaben aufnehmen.
 Eine Abkürzung in Klammern dahinter schreiben. -
 '''
 
-eingaben = ['collatz(col)','ggt','binhextest(bht)']
+eingaben = ['collatz(col)','ggt','binhextest(bht)', 'QR_Helper(QR-H)']
 
 def help_():
     print('Verfügbare Kommandos (Abkürzung in Klammern):')
