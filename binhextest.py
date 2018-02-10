@@ -36,7 +36,7 @@ def binhextest_ui():
     print('Du hast: ' + str(round(falsch / runden, 2) * 100) +'% Falsch gemacht.')
     print('Du hast ' + str(round(time.time() - start, 2)) + ' Sekunden gebraucht')
 
-    print('Das sind ' + str(round(round(time.time() - start, 2)/ runden), 2) + 'Sekunden pro Runde')
+    print('Das sind ' + str(round(round(time.time() - start, 2)/ runden, 2)) + 'Sekunden pro Runde')
 
 if __name__ == '__main__':
     binhextest_ui()
