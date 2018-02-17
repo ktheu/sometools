@@ -35,6 +35,3 @@ def zeige_unicode_zeichen(z):
 def zeige_unicode_zeichen_ui():
     s = input('Hexadezimalen Unicode CodePoint: ')
     zeige_unicode_zeichen(s)
-
-if __name__ == '__main__':
-    zeige_unicode_zeichen_ui()
