@@ -26,7 +26,7 @@ def zeige_unicode_zeichen(z):
     '''
 
     ausgabe = [html1,chr(z),html2]
-    outfile = 'zeige_unicode_zeichen.html'
+    outfile = 'temp.html'
     with open(outfile,'w',encoding='utf8') as f:
        f.writelines([x+'\n' for x in ausgabe] )
     os.startfile(outfile)
