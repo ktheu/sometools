@@ -14,7 +14,7 @@ edict = {}   # dictionary mit den gültigen Eingaben
 for x in eingaben:
     p1 = x.find('(')
     if p1 > 0:
-        p2 = x.find(')')
+        p2 = x.find(')',p1)
         abk = x[p1+1:p2]  # abkürzung
         cmd = x[:p1]      # kommando
         edict[cmd] = cmd
