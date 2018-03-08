@@ -1,3 +1,4 @@
+
 '''
 Eine neue Auswahl in die Liste eingaben aufnehmen.
 Eine Abkürzung in Klammern dahinter schreiben. -
@@ -36,3 +37,4 @@ while True:
     else:
         exec('from ' + edict[eingabe] + ' import *')
         exec(edict[eingabe]+'_ui()')
+print("Hello World")
