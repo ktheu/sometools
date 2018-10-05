@@ -1,29 +1,35 @@
+############################################################
+# IMPORTS
+############################################################
 import pygame
 
-def init():
-    try:
-        import pygame
-    except:
-        raise ImportError('pygame wurde nicht gefunden!')
 
+############################################################
+# FUNKTIONEN
+############################################################
 def createBaum(baumliste, layer=0):
-    if len(baumliste) == 1: return Baum(baumliste[0][layer:])
-    elif len(baumliste) == 0: return None
+    if len(baumliste) == 1:
+        return Baum(baumliste[0][layer:])
+    elif len(baumliste) == 0:
+        return None
     for i in range(0, len(baumliste)):
         if baumliste[i][layer:].isnumeric():
             index = i
             elem = baumliste[i][layer:]
-    return Baum(elem, createBaum(baumliste[index+1:], layer=layer+1), createBaum(baumliste[:index], layer=layer+1))
+    return Baum(elem, createBaum(baumliste[index + 1:], layer=layer + 1),
+                createBaum(baumliste[:index], layer=layer + 1))
+
 
 def drawBaum(baum, sgroeße, layer, screenshot, dateiname):
     pygame.init()
     font = pygame.font.SysFont('Arial', sgroeße)
-    screen = pygame.display.set_mode([(2**layer)*sgroeße*2+sgroeße, layer*2*sgroeße+3*sgroeße])
+    screen = pygame.display.set_mode([(2 ** layer) * sgroeße * 2 + sgroeße, layer * 2 * sgroeße + 3 * sgroeße])
     screen.fill([255, 255, 255])
-    recursiveDraw(screen, font, baum, [2**layer*sgroeße, sgroeße], sgroeße, layer, 0)
+    recursiveDraw(screen, font, baum, [2 ** layer * sgroeße, sgroeße], sgroeße, layer, 0)
     pygame.display.flip()
     if screenshot:
         pygame.image.save(screen, dateiname)
+
 
 def recursiveDraw(screen, font, baum, pos, sgroeße, maxlayer, layer):
     if baum.empty(): return False
@@ -36,26 +42,26 @@ def recursiveDraw(screen, font, baum, pos, sgroeße, maxlayer, layer):
     newY = y + 2 * sgroeße
     newpos1 = [newX1, newY]
     newpos2 = [newX2, newY]
-    if len(num)==2:
+    if len(num) == 2:
         screen.blit(numrender, pos)
 
-    elif len(num)==1:
-        #x += sgroeße/2
-        screen.blit(numrender, [x+sgroeße/4, y])
-        x += sgroeße/4
-    num1 = recursiveDraw(screen, font, baum.left(), newpos2, sgroeße, maxlayer, layer+1)
+    elif len(num) == 1:
+        # x += sgroeße/2
+        screen.blit(numrender, [x + sgroeße / 4, y])
+        x += sgroeße / 4
+    num1 = recursiveDraw(screen, font, baum.left(), newpos2, sgroeße, maxlayer, layer + 1)
     if num1 == 2:
-        pygame.draw.line(screen, [0, 0, 0], [x, y+sgroeße], [newX2+sgroeße/2, newY])
+        pygame.draw.line(screen, [0, 0, 0], [x, y + sgroeße], [newX2 + sgroeße / 2, newY])
     elif num1 == 1:
-        pygame.draw.line(screen, [0, 0, 0], [x, y+sgroeße], [newX2+sgroeße/2, newY])
-    if len(num)==2:
-        x+=sgroeße/2
-    if recursiveDraw(screen, font, baum.right(), newpos1, sgroeße, maxlayer, layer+1):
-        pygame.draw.line(screen, [0, 0, 0], [x+sgroeße/2, y+sgroeße], [newX1+sgroeße/2, newY])
+        pygame.draw.line(screen, [0, 0, 0], [x, y + sgroeße], [newX2 + sgroeße / 2, newY])
+    if len(num) == 2:
+        x += sgroeße / 2
+    if recursiveDraw(screen, font, baum.right(), newpos1, sgroeße, maxlayer, layer + 1):
+        pygame.draw.line(screen, [0, 0, 0], [x + sgroeße / 2, y + sgroeße], [newX1 + sgroeße / 2, newY])
     return len(num)
 
+
 def BaumDarstellung_ui():
-    init()
     cmd = input('Wollen sie aus einem File lesen (f) oder den Baum von Hand eingeben (h)?')
     if cmd.lower() == 'f':
         dateiname = input('Dateiname:\n')
@@ -85,7 +91,8 @@ def BaumDarstellung_ui():
     baum = createBaum(baumList)
     layerList = [i.count('.') for i in baumList]
     layer = max(layerList)
-    dateiname = input('Dateiname zum speichern des Bildes: Wenn kein Dateiname angegeben wird wird das bild nicht gescpeichert')
+    dateiname = input(
+        'Dateiname zum speichern des Bildes: Wenn kein Dateiname angegeben wird wird das bild nicht gescpeichert')
     if dateiname == '':
         screenshot = False
     else:
@@ -94,7 +101,7 @@ def BaumDarstellung_ui():
             if dateiname[-4:] != '.jpg':
                 dateiname += '.jpg'
         except:
-            dateiname+='.jpg'
+            dateiname += '.jpg'
     drawBaum(baum, schrift, layer, screenshot, dateiname)
     end = False
     while not end:
@@ -108,7 +115,7 @@ def BaumDarstellung_ui():
 # KLASSEN
 ############################################################
 class Knoten:
-    def __init__(self,x = None):
+    def __init__(self, x=None):
         self.inhalt = x
         self.links = None
         self.rechts = None
@@ -116,11 +123,12 @@ class Knoten:
     def __str__(self):
         return self.inhalt.__str__()
 
+
 class Baum:
-    def __init__(self,x = None,l = None,r = None):
+    def __init__(self, x=None, l=None, r=None):
         self.wurzel = None
         if x is not None:
-           self.wurzel = Knoten(x)
+            self.wurzel = Knoten(x)
         if l is not None:
             self.wurzel.links = l.wurzel
         if r is not None:
@@ -152,7 +160,7 @@ class Baum:
             s = s[:-1]
         return s
 
-    def baumString(self,tiefe):
+    def baumString(self, tiefe):
         s = ""
         punkte = "." * tiefe
         if not self.right().empty():
@@ -164,10 +172,6 @@ class Baum:
         if not self.left().empty():
             s = s + self.left().baumString(tiefe + 1)
         return s
-
-############################################################
-# INIT
-############################################################
 
 
 ############################################################
