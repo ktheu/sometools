@@ -39,4 +39,4 @@ def binhextest_ui():
     print('Das sind ' + str(round(round(time.time() - start, 2)/ runden, 2)) + 'Sekunden pro Runde')
 
 if __name__ == '__main__':
-    ggt_ui()
+    binhextest_ui()

@@ -16,6 +16,3 @@ def ggt_ui():
     eingabe = input('Bitte die beiden Zahlen mit blank getrennt eingeben: ')
     x, y = [int(a) for a in eingabe.split()]
     print('Der ggT von',x,'und',y,'ist',ggt(x,y))
-
-if __name__ == '__main__':
-    ggt_ui()
