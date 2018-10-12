@@ -2,17 +2,14 @@
 # IMPORTS
 ############################################################
 import pygame
+import random
 
 
 ############################################################
 # FUNKTIONEN
 ############################################################
 def BaumDarstellen(baum):
-    b = baum
-    layer = -1
-    while not b.empty():
-        b = b.left()
-        layer += 1
+    layer = findeTiefe(baum) - 1
     drawBaum(baum, 30, layer)
     end = False
     while not end:
@@ -59,6 +56,45 @@ def recursiveDraw(screen, font, baum, pos, sgroeße, maxlayer, layer):
     if recursiveDraw(screen, font, baum.right(), newpos1, sgroeße, maxlayer, layer + 1):
         pygame.draw.line(screen, [0, 0, 0], [x + sgroeße / 2, y + sgroeße], [newX1 + sgroeße / 2, newY])
     return len(num)
+
+
+def findeTiefe(baum):
+    '''
+    Gibt die Toefe des Bauems zurück gezählt ab 1
+    :param baum: Baum
+    :return: int
+    '''
+    if baum.empty(): return 0
+    return max(findeTiefe(baum.left()), findeTiefe(baum.right())) + 1
+
+
+def randomBaum():
+    baume = []
+    tiefe = random.randint(3, 5)
+    print(tiefe)
+    for i in range(random.randint(2 ** (tiefe - 1), 2 ** tiefe)):
+        baume.append(Baum(random.randint(1, 30)))
+    while len(baume) > 1:
+        n = random.random()
+        if n > 0.9:
+            n = random.randint(1, 2)
+            elem = random.choice(baume)
+            baume.remove(elem)
+            if n == 1:
+                baume.append(Baum(random.randint(1, 30), elem, None))
+                if findeTiefe(baume[-1]) == tiefe: return baume[-1]
+            else:
+                baume.append(Baum(random.randint(1, 30), None, elem))
+                if findeTiefe(baume[-1]) == tiefe: return baume[-1]
+        else:
+            elem1 = random.choice(baume)
+            baume.remove(elem1)
+            elem2 = random.choice(baume)
+            baume.remove(elem2)
+            baume.append(Baum(random.randint(1, 30), elem1, elem2))
+            if findeTiefe(baume[-1]) == tiefe: return baume[-1]
+    baum = random.choice(baume)
+    return baum
 
 
 ############################################################
@@ -122,3 +158,7 @@ class Baum:
         if not self.left().empty():
             s = s + self.left().baumString(tiefe + 1)
         return s
+
+
+b = randomBaum()
+print(findeTiefe(b))
