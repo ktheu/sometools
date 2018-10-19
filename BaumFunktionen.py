@@ -68,10 +68,28 @@ def findeTiefe(baum):
     return max(findeTiefe(baum.left()), findeTiefe(baum.right())) + 1
 
 
-def randomBaum():
+def anzahlKnoten(baum):
+    '''
+    zählt wie viele Knoten ein Baum hat
+    :param baum: Baum
+    :return: int
+    '''
+    if baum.empty(): return 0
+    return anzahlKnoten(baum.left()) + anzahlKnoten(baum.right()) + 1
+
+
+def randomBaum(tiefe=None, minKnoten=None):
+    '''
+    kreiert ein random Baum
+    :param tiefe: int
+    :param minKnoten: int, nicht kleiner als 2**tiefe-1
+    :return: Baum
+    '''
+    if tiefe is None:
+        tiefe = 4
+    if minKnoten is None:
+        minKnoten = 2 ** (tiefe - 1)
     baume = []
-    tiefe = random.randint(3, 5)
-    print(tiefe)
     for i in range(random.randint(2 ** (tiefe - 1), 2 ** tiefe)):
         baume.append(Baum(random.randint(1, 30)))
     while len(baume) > 1:
@@ -92,9 +110,15 @@ def randomBaum():
             elem2 = random.choice(baume)
             baume.remove(elem2)
             baume.append(Baum(random.randint(1, 30), elem1, elem2))
-            if findeTiefe(baume[-1]) == tiefe: return baume[-1]
-    baum = random.choice(baume)
-    return baum
+            if findeTiefe(baume[-1]) == tiefe:
+                if anzahlKnoten(baume[-1]) >= minKnoten:
+                    return baume[-1]
+                else:
+                    return randomBaum(tiefe, minKnoten)
+    if anzahlKnoten(baume[0]) >= minKnoten:
+        return baume[0]
+    else:
+        return randomBaum(tiefe, minKnoten)
 
 
 ############################################################
@@ -158,7 +182,3 @@ class Baum:
         if not self.left().empty():
             s = s + self.left().baumString(tiefe + 1)
         return s
-
-
-b = randomBaum()
-print(findeTiefe(b))
